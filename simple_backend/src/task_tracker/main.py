@@ -1,5 +1,3 @@
-from typing import List
-
 import uvicorn
 from fastapi import FastAPI
 from pydantic import BaseModel
@@ -17,7 +15,7 @@ class Task(BaseModel):
     status: bool
 
 
-tasks: List[Task] = []
+tasks: list[Task] = []
 
 
 def get_task_id():
@@ -31,7 +29,7 @@ def get_task_id():
     return id
 
 
-@app.get("/tasks", response_model=List[Task])
+@app.get("/tasks", response_model=list[Task])
 def get_tasks():
     logging.info('all task status True')
     task_all = [task for task in tasks if task['status']]
